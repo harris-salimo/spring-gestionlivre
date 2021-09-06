@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bookit</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        a.custom-link, a.custom-link:hover, a.custom-link:focus, a.custom-link:visited {
+            color: black;
+            text-style: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" aria-label="Tenth navbar example">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Bookit</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link active dropdown-toggle" href="#" id="dropdown08" data-bs-toggle="dropdown" aria-expanded="false">John DOE</a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdown08">
+                            <li><a class="dropdown-item" href="#">Paramètres</a></li>
+                            <li><a class="dropdown-item" href="#">Se deconnecter</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- End Navbar -->
+
+    <div class="container my-5">
+        <div style="display: flex; align-items: center; justify-content: space-between">
+            <h3>Liste de toutes les livres</h3>
+            <a th:href="@{/books/add}" class="btn btn-sm btn-primary">Nouveau</a>
+        </div>
+
+        <table class="table my-2">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Titre</th>
+                    <th>Statut</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="book : ${booksList}">
+                    <td></td>
+                    <td>
+                        <a class="custom-link" th:href="@{/books/show/{id}(id=${book.id})}" th:text="${book.title}"></a>
+                    </td>
+                    <td th:text="${book.status}"></td>
+                    <td>
+                        <a th:href="@{/books/remove/{id}(id=${book.id})}" class="btn btn-sm btn-danger">Supprimer</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

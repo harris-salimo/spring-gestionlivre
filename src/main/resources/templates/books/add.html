@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bookit</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" aria-label="Tenth navbar example">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Bookit</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link active dropdown-toggle" href="#" id="dropdown08" data-bs-toggle="dropdown" aria-expanded="false">John DOE</a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdown08">
+                            <li><a class="dropdown-item" href="#">Paramètres</a></li>
+                            <li><a class="dropdown-item" href="#">Se deconnecter</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- End Navbar -->
+
+    <div class="container my-5">
+        <div style="display: flex; align-items: center; justify-content: space-between">
+            <h3>Ajouter une nouvelle livre</h3>
+            <a th:href="@{/books}" class="btn btn-sm btn-secondary">Retour</a>
+        </div>
+
+        <div class="mx-auto my-5" style="width: 600px; height: 200px; background-color: ghostwhite; border: 1px solid #dedede; border-radius: 10px; padding: 25px" align="center">
+            <form action="#" method="post" th:action="@{/books/add}" th:object="${book}" >
+                <input class="form-control mb-3" type="text" placeholder="Titre" th:field="*{title}">
+                <input class="form-control mb-3" type="text" placeholder="Statut" th:field="*{status}">
+                <input class="btn btn-sm btn-block btn-success mx-auto" type="submit" value="Ajouter">
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
